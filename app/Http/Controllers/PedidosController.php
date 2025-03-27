@@ -2,63 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class PedidosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        return view('pedidos.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('pedidos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $dadosPedido = $request->except('_token');
+        Item::create($dadosPedido);
+        return redirect()->route('pedidos.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function show(Item $pedido)
     {
-        //
+        return view('pedidos.show', compact('pedido'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(string $pedido)
     {
-        //
+        return view('pedido.edit', compact('pedido'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        $dadosPedido = $request->except('_token');
+        Item::find($id)->update($dadosPedido);
+        return redirect()->route('pedidos.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy(string $pedido)
     {
-        //
+        $pedido = Item::find($pedido);
+        $pedido->delete();
+        return redirect()->route('pedidos.index');
     }
 }

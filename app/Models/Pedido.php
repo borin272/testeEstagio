@@ -9,6 +9,6 @@ class Pedido extends Model
     protected $table = 'pedidos';
 
     protected $fillable = [
-        'status',
+        'nomeCliente', 'emailCliente', 'quantidade', 'status',
     ];
 }

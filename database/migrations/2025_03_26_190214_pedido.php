@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
+            $table->string('nomeCliente');
+            $table->string('emailCliente');
+            $table->decimal('quantidade', 10, 2);
+            $table->string('status')->default('pendente');
             $table->timestamps();
         });
     }
@@ -26,4 +29,5 @@ return new class extends Migration
         Schema::dropIfExists('pedidos');
     }
 };
+
 

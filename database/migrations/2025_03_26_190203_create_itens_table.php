@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pedidos', function (Blueprint $table) {
+        Schema::create('itens', function (Blueprint $table) {
             $table->id();
-            $table->string('nomeCliente');
-            $table->string('emailCliente');
-            $table->decimal('quantidade', 10, 2);
-            $table->string('status')->default('pendente');
+            $table->string('nome');
+            $table->text('descricao');
+            $table->float('valor');
+            $table->integer('quantidade');
             $table->timestamps();
         });
     }
@@ -26,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('itens');
     }
 };
-
-

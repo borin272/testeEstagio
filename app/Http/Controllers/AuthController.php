@@ -12,11 +12,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validatedData = $request->validate([
-            'loginname' => 'required',
+            'loginemail' => 'required',
             'loginpassword' => 'required'
         ]);
 
-        if(Auth::attempt(['name' => $validatedData['loginname'], 'password' => $validatedData['loginpassword']])) {
+        if(Auth::attempt(['email' => $validatedData['loginemail'], 'password' => $validatedData['loginpassword']])) {
             $request->session()->regenerate();
         }
 

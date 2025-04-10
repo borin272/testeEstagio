@@ -11,7 +11,7 @@
                     <h1>Login</h1>
                 </div>
                 <div class="card-body">
-                    <form action="/login" method="POST">
+                    <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="form-group mb-3">
                             <input type="text" name="loginemail" placeholder="Email" class="form-control">

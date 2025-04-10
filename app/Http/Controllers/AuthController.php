@@ -16,11 +16,17 @@ class AuthController extends Controller
             'loginpassword' => 'required'
         ]);
 
-        if(Auth::attempt(['email' => $validatedData['loginemail'], 'password' => $validatedData['loginpassword']])) {
+        if (Auth::attempt([
+            'email' => $validatedData['loginemail'],
+            'password' => $validatedData['loginpassword']
+        ])) {
             $request->session()->regenerate();
+            return redirect()->route('dashboard');
         }
 
-        return redirect('/');
+        return back()->withErrors([
+            'loginemail' => 'Credenciais inválidas.',
+        ]);
     }
 
     public function logout()
@@ -36,6 +42,7 @@ class AuthController extends Controller
         'email' => 'required|string|email|max:255|unique:users',
         'telefone' => 'string|max:20',
         'password' => 'required|string|min:8',
+        'cargo' => 'funcionario',
     ]);
 
     $validatedData['password'] = Hash::make($validatedData['password']);

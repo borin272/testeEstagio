@@ -7,28 +7,35 @@ use Illuminate\Support\Facades\Route;
 // Rota principal
 Route::view('/', 'home');
 
-// Autenticação
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/logout', [AuthController::class, 'logout']);
-Route::post('/login', [AuthController::class, 'login']);
+// Rotas de autenticação
+Route::middleware('guest')->group(function () {
+    Route::get('/login', function () {
+        return view('login');
+    })->name('login');
 
-// Login (GET)
-Route::get('/login', function () {
-    return view('login');
-})->name('login'); // <- Rota nomeada
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+});
 
-// Dashboard (apenas autenticados)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')->middleware('auth');
+// Rotas protegidas por autenticação
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
-// Admin (middleware 'admin')
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return 'Painel Admin';
+// Rotas administrativas
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('index');
+
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
     });
 
-    // Rotas administrativas
-    Route::get('/admin/usuarios', [UserController::class, 'index'])->name('admin.usuarios');
-    Route::put('/admin/usuarios/{user}/promover', [UserController::class, 'promover'])->name('admin.usuarios.promover');
+    // Gestão de usuários
+    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios');
+    Route::put('/usuarios/{user}/promover', [UserController::class, 'promover'])->name('usuarios.promover');
 });

@@ -1,8 +1,9 @@
-/* Estilos gerais */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    position: relative;
+    padding-bottom: 80px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8fafc;
 }
@@ -85,13 +86,13 @@ html, body {
 }
 
 .btn-primary {
-    background: #3b82f6;
+    background: #212529;
     color: white;
     border: none;
 }
 
 .btn-primary:hover {
-    background: #2563eb;
+    background: #343a40;
 }
 
 .btn-secondary {
@@ -118,6 +119,55 @@ html, body {
 
 .link-text a:hover {
     text-decoration: underline;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px;
+}
+
+.navbar-brand {
+    letter-spacing: 0.5px;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand i {
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover i {
+    transform: rotate(-10deg);
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    margin: 2rem 0;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Adicione esta regra CSS */
+.card-register {
+    margin-bottom: 4rem !important;
 }
 
 /* Responsividade */

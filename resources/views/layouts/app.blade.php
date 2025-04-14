@@ -4,27 +4,29 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'GerenciamentoDeEstoque') }}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <title>{{ config('app.name', 'Estoques') }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div id="app">
-        <main class="py-4">
-            @yield('content') <!-- Seção principal que será substituída nas views filhas -->
+        @include('layouts.header')
 
-        </main>
-    </div>
+        <div class="flex-grow-1 d-flex align-items-center">
+            <main class="w-100">
+                @yield('content')
+            </main>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @stack('scripts')
+            @include('layouts.footer')
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        @stack('scripts')
 </body>
 
 </html>

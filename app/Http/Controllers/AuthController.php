@@ -50,6 +50,6 @@ class AuthController extends Controller
     $user = User::create($validatedData);
     Auth::login($user);
 
-    return redirect('/');
+    return redirect()->route('dashboard');
 }
 }

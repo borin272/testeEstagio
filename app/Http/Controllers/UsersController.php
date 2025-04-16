@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -23,7 +24,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $dadosUser = $request->except('_token');
-        Item::create($dadosUser);
+        User::create($dadosUser);
         return redirect()->route('users.index');
     }
 
@@ -36,7 +37,7 @@ class UsersController extends Controller
     public function update(Request $request, string $id)
     {
         $dadosUser = $request->except('_token');
-        Item::find($id)->update($dadosUser);
+        User::find($id)->update($dadosUser);
         return redirect()->route('users.index');
     }
 

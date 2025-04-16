@@ -11,7 +11,7 @@ class VerifyAdmin
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user() && Auth::user()->role === 'admin') {
+        if (Auth::user() && Auth::user()->cargo === 'admin') {
             return $next($request);
         }
 

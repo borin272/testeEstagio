@@ -9,14 +9,21 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto flex-row gap-3">
                 @auth
-                <li class="nav-item d-flex align-items-center gap-3">
-                    @if (Auth::user()->cargo === 'admin')
-                        <a href="{{ route('admin.index') }}" class="btn btn-outline-light btn-sm">
-                            Painel Admin
+                    <li class="nav-item">
+                        @if (Auth::user()->cargo === 'admin')
+                            <a href="{{ route('admin.index') }}" class="btn btn-outline-light btn-sm">
+                                Painel Admin
+                            </a>
+                        @endif
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('perfil.show') }}" class="btn btn-outline-light btn-sm">
+                            Perfil
                         </a>
-                    @endif
+                    </li>
+                    <li class="nav-item">
                         <form method="POST" action="{{ route('logout') }}" class="d-inline">
                             @csrf
                             <button type="submit" class="btn btn-outline-light btn-sm">
@@ -29,5 +36,3 @@
         </div>
     </div>
 </nav>
-
-

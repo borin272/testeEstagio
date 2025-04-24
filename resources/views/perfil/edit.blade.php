@@ -24,7 +24,7 @@
 
                 <div class="mb-3">
                     <label for="telefone" class="form-label small text-muted">Telefone</label>
-                    <input type="text" class="form-control form-control-sm" id="telefone" name="telefone"
+                    <input class="form-control phone" type="text" class="form-control form-control-sm" id="telefone" name="telefone"
                            value="{{ old('telefone', $user->telefone) }}" required>
                 </div>
 

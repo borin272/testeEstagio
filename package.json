@@ -11,6 +11,8 @@
         "vite": "^6.0.11"
     },
     "dependencies": {
-        "crypto-browserify": "^3.12.1"
+        "crypto-browserify": "^3.12.1",
+        "jquery": "^3.7.1",
+        "jquery-mask-plugin": "^1.14.16"
     }
 }

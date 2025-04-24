@@ -11,7 +11,7 @@ class UserController extends Controller
     // Listar todos os usuários (exceto admins, se desejar)
     public function index()
     {
-        $users = User::where('cargo', 'funcionario')->get();
+        $users = User::whereIn('cargo', ['funcionario', 'admin'])->get();
         return view('admin.usuarios', compact('users'));
     }
 
@@ -20,5 +20,11 @@ class UserController extends Controller
     {
         $user->update(['cargo' => 'admin']);
         return back()->with('success', 'Usuário promovido a admin!');
+    }
+
+    public function rebaixar(User $user)
+    {
+        $user->update(['cargo' => 'funcionario']);
+        return back()->with('success', 'Usuário rebaixado a funcionario!');
     }
 }

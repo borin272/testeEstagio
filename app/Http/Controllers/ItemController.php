@@ -20,19 +20,22 @@ class ItemController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'nome' => 'required|string|max:255',
-            'descricao' => 'nullable|string',
-            'valor' => 'required|numeric|min:0',
-            'quantidade' => 'required|integer|min:0',
-        ]);
+{
+    $validated = $request->validate([
+        'nome' => 'required|string|max:255',
+        'descricao' => 'nullable|string',
+        'valor' => 'required',
+        'quantidade' => 'required|integer|min:0',
+    ]);
 
-        Item::create($validated);
+    $validated['valor'] = str_replace('.', '', $validated['valor']);
+    $validated['valor'] = str_replace(',', '.', $validated['valor']);
+    $validated['valor'] = (float)$validated['valor'];
 
-        return redirect()->route('admin.items.index')->with('success', 'Item criado com sucesso!'); // Corrigida a rota
-    }
+    Item::create($validated);
 
+    return redirect()->route('admin.items.index')->with('success', 'Item criado com sucesso!');
+}
     public function show(Item $item)
     {
         return view('admin.items.show', compact('item')); // Corrigido para usar o caminho admin

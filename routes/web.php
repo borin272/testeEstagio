@@ -50,6 +50,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios');
     Route::get('/usuarios/{user}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
     Route::put('/usuarios/{user}/promover', [UserController::class, 'promover'])->name('usuarios.promover');
+    Route::put('/usuarios/{user}/rebaixar', [UserController::class, 'rebaixar'])->name('usuarios.rebaixar');
 
      // Dashboard com cards
      Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');

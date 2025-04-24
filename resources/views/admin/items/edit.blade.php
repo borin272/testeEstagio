@@ -29,7 +29,7 @@
 
                             <div class="mb-3">
                                 <label for="descricao" class="form-label">Descrição</label>
-                                <textarea class="form-control @error('descricao') is-invalid @enderror" id="descricao" name="descricao" rows="1">{{ old('descricao', $item->descricao) }}</textarea>
+                                <textarea class="form-control trumbowyg @error('descricao') is-invalid @enderror" id="descricao" name="descricao" rows="3">{{ old('descricao', $item->descricao) }}</textarea>
                                 @error('descricao')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -40,7 +40,7 @@
                                     <label for="valor" class="form-label">Valor (R$) *</label>
                                     <div class="input-group">
                                         <span class="input-group-text">R$</span>
-                                        <input type="number" step="0.01"
+                                        <input class="form-control money" type="text"
                                             class="form-control @error('valor') is-invalid @enderror" id="valor"
                                             name="valor" value="{{ old('valor', $item->valor) }}" required>
                                         @error('valor')

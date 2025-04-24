@@ -45,6 +45,7 @@
                                         <th>Nome</th>
                                         <th>Valor</th>
                                         <th>Estoque</th>
+                                        <th>Descrição</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
@@ -58,19 +59,27 @@
                                                 class="align-middle {{ $item->quantidade < 5 ? 'text-danger font-weight-bold' : '' }}">
                                                 {{ $item->quantidade }}
                                             </td>
+                                            <td class="align-middle">{{ $item->descricao }}</td>
                                             <td class="align-middle">
-                                                <div class="d-flex justify-content-center">
+                                                <div class="d-flex justify-content-center gap-2">
+                                                    <!-- Botão Editar -->
                                                     <a href="{{ route('admin.items.edit', $item->id) }}"
-                                                        class="btn btn-sm btn-warning mx-2" title="Editar">
-                                                        <i class="fas fa-edit"></i>
+                                                       class="btn btn-sm btn-warning d-flex align-items-center justify-content-center"
+                                                       style="width: 40px; height: 40px;"
+                                                       title="Editar">
+                                                        <i class="fas fa-edit fa-fw"></i>
                                                     </a>
-                                                    <form action="{{ route('admin.items.destroy', $item->id) }}"
-                                                        method="POST">
+
+                                                    <!-- Botão Excluir -->
+                                                    <form action="{{ route('admin.items.destroy', $item->id) }}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger mx-1"
-                                                            title="Excluir" onclick="return confirm('Tem certeza?')">
-                                                            <i class="fas fa-trash"></i>
+                                                        <button type="submit"
+                                                                class="btn btn-sm btn-danger d-flex align-items-center justify-content-center"
+                                                                style="width: 40px; height: 40px;"
+                                                                title="Excluir"
+                                                                onclick="return confirm('Tem certeza?')">
+                                                            <i class="fas fa-trash fa-fw"></i>
                                                         </button>
                                                     </form>
                                                 </div>

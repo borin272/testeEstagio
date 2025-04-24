@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-5">
+        <div class="col-md-9">
             <div class="card shadow-sm">
                 <div class="card-header bg-dark text-white py-2">
                     <h5 class="mb-0">Adicionar Novo Item</h5>
@@ -22,13 +22,13 @@
 
                         <div class="mb-2">
                             <label for="descricao" class="form-label small mb-1">Descrição</label>
-                            <textarea class="form-control" id="descricao" name="descricao" rows="1"></textarea>
+                            <textarea class="form-control trumbowyg" id="descricao" name="descricao" rows="3"></textarea>
                         </div>
 
                         <div class="row g-2">
                             <div class="col-md-6">
                                 <label for="valor" class="form-label small mb-1">Valor (R$)</label>
-                                <input type="number" step="0.01" class="form-control" id="valor" name="valor" required>
+                                <input class="form-control money" type="text" id="valor" name="valor" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="quantidade" class="form-label small mb-1">Estoque</label>

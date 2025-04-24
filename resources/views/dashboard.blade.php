@@ -49,7 +49,7 @@
 
         @isset($ultimosItens)
             <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-5">
+                <div class="col-md-10">
                     <div class="card shadow-sm border-0">
                         <div class="card-header bg-dark text-white">
                             <h5 class="mb-0">Últimos Itens Cadastrados</h5>
@@ -62,6 +62,7 @@
                                             <th class="px-4">Nome</th>
                                             <th class="px-4">Valor</th>
                                             <th class="px-4">Quantidade</th>
+                                            <th class="px-4">Descrição</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -70,6 +71,7 @@
                                                 <td class="px-4">{{ $item->nome }}</td>
                                                 <td class="px-4">R$ {{ number_format($item->valor, 2, ',', '.') }}</td>
                                                 <td class="px-4">{{ $item->quantidade }}</td>
+                                                <td class="px-4">{{ $item->descricao }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
